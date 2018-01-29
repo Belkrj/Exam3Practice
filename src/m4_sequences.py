@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  SEQUENCES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Robert Belk.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -35,9 +35,9 @@ import rosegraphics as rg
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_practice_problem4a()
-    run_test_practice_problem4b()
-    run_test_practice_problem4c()
+    #run_test_practice_problem4a()
+    #run_test_practice_problem4b()
+    #run_test_practice_problem4c()
     run_test_practice_problem4d()
 
 
@@ -109,6 +109,11 @@ def run_test_practice_problem4a():
 
 
 def practice_problem4a(sequence):
+    tlist = []
+    for k in range(len(sequence)-1):
+        if sequence[k] == sequence[k+1]:
+            tlist.append(k)
+    return tlist
     """
     What comes in: A non-empty sequence.
     What goes out: Returns a list of integers,
@@ -134,7 +139,7 @@ def practice_problem4a(sequence):
       :type sequence: list | tuple | string
     """
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -180,6 +185,12 @@ def run_test_practice_problem4b():
 
 
 def practice_problem4b(sequence):
+    bigger_num = sequence[0]
+    for k in range(0, len(sequence), 2):
+        if sequence[k] > bigger_num:
+            bigger_num = sequence[k]
+    return bigger_num
+
     """
     What comes in:
       A sequence of numbers, where the length of the sequence >= 2.
@@ -197,7 +208,7 @@ def practice_problem4b(sequence):
       :type sequence: (list | tuple) of (float | int)
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -265,6 +276,17 @@ def run_test_practice_problem4c():
 
 
 def practice_problem4c(points):
+    for k in range(len(points)):
+        if is_prime(points[k].x) == True and is_prime(points[k].y) == True:
+            x = points[k].x
+            y = points[k].y
+            points[k].y = x
+            points[k].x = y
+
+            new_point = rg.Point(points[k].x, points[k].y)
+
+            return new_point
+    return 'Not Found'
     """
     What comes in:  A tuple of rg.Points, each of whose coordinates
       is an integer.
@@ -295,7 +317,7 @@ def practice_problem4c(points):
       :rtype: rg.Point | string
     """
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -342,6 +364,14 @@ def run_test_practice_problem4d():
 
 
 def practice_problem4d(sequence):
+    total = 0
+    for k in range(len(sequence) - 1):
+        if is_prime(sequence[k]) is True and is_prime(sequence[k + 1]) is True:
+            if sequence[k] != sequence[k+1]:
+                total = total + sequence[k]
+
+    return total
+
     """
     What comes in: A non-empty sequence of integers.
     What goes out: An integer that is the sum of all the items
@@ -391,7 +421,7 @@ def practice_problem4d(sequence):
       :rtype: int
     """
     ####################################################################
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
